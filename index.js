@@ -16,7 +16,7 @@ async function loadGang() {
     "http://api.thunderkartells.qzz.io:20253/api/gang",
     {
       headers: {
-        "x-api-key": "dp_live_cQBoUePLT1C5Rb4IPN06qWps"
+        "x-api-key": "dp_live_JbLRZzyMCZ0HAS9t7WpRmomM"
       }
     }
   );
