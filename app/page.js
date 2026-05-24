@@ -37,7 +37,10 @@ export default function Home() {
               Thunder Kartells
             </h1>
           </div>
-
+<script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+<script>
+eruda.init();
+</script>
           <div className="flex gap-6 text-sm text-zinc-400">
             <a href="#">Home</a>
             <a href="#">Gang</a>
