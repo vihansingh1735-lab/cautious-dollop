@@ -1,13 +1,27 @@
+import Providers from "./providers";
+
 export const metadata = {
   title: "Thunder Kartells"
 };
 
-import "./globals.css";
+export default function RootLayout({
+  children
+}) {
 
-export default function RootLayout({ children }) {
   return (
+
     <html lang="en">
-      <body>{children}</body>
+
+      <body>
+
+        <Providers>
+          {children}
+        </Providers>
+
+      </body>
+
     </html>
+
   );
+
 }
