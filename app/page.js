@@ -12,7 +12,7 @@ export default function Home() {
 
     fetch("http://api.thunderkartells.qzz.io:20253/api/gang", {
       headers: {
-        "x-api-key": "YOUR_API_KEY"
+        "x-api-key": "dp_live_JbLRZzyMCZ0HAS9t7WpRmomM"
       }
     })
       .then(res => res.json())
@@ -66,21 +66,28 @@ eruda.init();
           </h1>
 
           <p className="mt-6 text-zinc-400 max-w-2xl text-lg">
-            Elite Discord Management • Antinuke • Security • API Powered Dashboard
+            Built On Unity • Hard Work • And Leadership
           </p>
 
           <div className="flex gap-4 mt-10">
 
-            <button className="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded-2xl font-bold">
-              Join Discord
-            </button>
+  <a
+    href="https://discord.gg/ehtk"
+    target="_blank"
+    className="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded-2xl font-bold"
+  >
+    Join Discord
+  </a>
 
-            <button className="border border-white/10 hover:bg-white/5 transition px-6 py-3 rounded-2xl">
-              Dashboard
-            </button>
+  <a
+    href="http://51.83.6.7:20253"
+    target="_blank"
+    className="border border-white/10 hover:bg-white/5 transition px-6 py-3 rounded-2xl"
+  >
+    Dashboard
+  </a>
 
-          </div>
-
+</div>
         </motion.div>
 
       </section>
@@ -93,12 +100,7 @@ eruda.init();
             title: "Members",
             value: members.length,
             icon: Users
-          },
-          {
-            title: "API",
-            value: "ONLINE",
-            icon: Globe
-          },
+          }, 
           {
             title: "Protection",
             value: "ACTIVE",
