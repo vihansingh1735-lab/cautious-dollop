@@ -34,18 +34,14 @@ export default function Home() {
 
   useEffect(() => {
 
-    fetch(
-      "http://51.83.6.7:20253/api/gang",
-      {
-        headers: {
-          "x-api-key":
-            "dp_live_JbLRZzyMCZ0HAS9t7WpRmomM"
-        }
-      }
-    )
-      .then(res => res.json())
-      .then(data => setMembers(data))
-      .catch(console.error);
+    fetch("http://51.83.6.7:20253/api/gang", {
+  headers: {
+    "x-api-key": "dp_live_JbLRZzyMCZ0HAS9t7WpRmomM"
+  }
+})
+  .then(res => res.json())
+  .then(data => setMembers(data))
+  .catch(console.error);
 
   }, []);
 
