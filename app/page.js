@@ -69,25 +69,73 @@ eruda.init();
             Built On Unity • Hard Work • And Leadership
           </p>
 
+          "use client";
+
+import { motion } from "framer-motion";
+
+export default function Home() {
+  return (
+    <main className="relative min-h-screen text-white overflow-hidden">
+
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="fixed top-0 left-0 w-full h-full object-cover -z-10"
+      >
+        <source
+          src="https://cdn.discordapp.com/app-assets/356876590342340608/store/1486738060996644944.mp4?size=4096"
+          type="video/mp4"
+        />
+      </video>
+
+      <div className="absolute inset-0 bg-black/60 -z-10" />
+
+      <section className="max-w-7xl mx-auto px-6 pt-40">
+
+        <motion.div
+          initial={{ opacity: 0, y: 80 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+
+          <h1 className="text-7xl font-black leading-tight">
+            THUNDER
+            <span className="text-red-500"> KARTELLS</span>
+          </h1>
+
+          <p className="mt-6 text-zinc-300 max-w-2xl text-lg">
+            Built On Unity • Hard Work • Leadership
+          </p>
+
           <div className="flex gap-4 mt-10">
 
-  <a
-    href="https://discord.gg/ehtk"
-    target="_blank"
-    className="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded-2xl font-bold"
-  >
-    Join Discord
-  </a>
+            <a
+              href="https://discord.gg/YOURINVITE"
+              target="_blank"
+              className="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded-2xl font-bold"
+            >
+              Join Discord
+            </a>
 
-  <a
-    href="http://51.83.6.7:20253"
-    target="_blank"
-    className="border border-white/10 hover:bg-white/5 transition px-6 py-3 rounded-2xl"
-  >
-    Dashboard
-  </a>
+            <a
+              href="http://51.83.6.7:20253"
+              target="_blank"
+              className="border border-white/10 hover:bg-white/5 transition px-6 py-3 rounded-2xl"
+            >
+              Dashboard
+            </a>
 
-</div>
+          </div>
+
+        </motion.div>
+
+      </section>
+
+    </main>
+  );
+}
         </motion.div>
 
       </section>
