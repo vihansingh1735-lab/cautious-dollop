@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
 body {
-  margin: 0;
   background: black;
   color: white;
-  font-family: sans-serif;
+  overflow-x: hidden;
 }
