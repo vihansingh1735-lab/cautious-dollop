@@ -108,17 +108,17 @@ export default function Home() {
         {[
           {
             title: "Members",
-            value: members.length,
+            value: 57,
             icon: Users
           },
           {
-            title: "Protection",
-            value: "ACTIVE",
+            title: "Gang Discord",
+            value: "Click On Join Discord",
             icon: Shield
           },
           {
             title: "Status",
-            value: "SECURED",
+            value: "Active",
             icon: Activity
           }
         ].map((item, i) => {
@@ -129,7 +129,7 @@ export default function Home() {
             <motion.div
               key={i}
               whileHover={{ scale: 1.04 }}
-              className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-6"
+              className="bg-white/5 border border-blue/10 backdrop-blur-xl rounded-3xl p-6"
             >
 
               <Icon className="text-white-500 mb-4" size={32} />
