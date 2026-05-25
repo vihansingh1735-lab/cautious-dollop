@@ -34,17 +34,16 @@ export default function Home() {
 
   useEffect(() => {
 
-    fetch("/api/gang", {
-  headers: {
-    "x-api-key": "dp_live_JbLRZzyMCZ0HAS9t7WpRmomM"
-  }
-}) {
-  .then(res => res.json())
-  .then(data => setMembers(data))
-  .catch(console.error);
+  fetch("/api/gang", {
+    headers: {
+      "x-api-key": "dp_live_JbLRZzyMCZ0HAS9t7WpRmomM"
+    }
+  })
+    .then(res => res.json())
+    .then(data => setMembers(data))
+    .catch(console.error);
 
-  }, []);
-
+}, []);
   return (
 
     <main className="relative min-h-screen bg-black text-white overflow-hidden">
