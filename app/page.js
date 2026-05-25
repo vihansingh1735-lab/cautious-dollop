@@ -78,19 +78,19 @@ export default function Home() {
     <main className="relative min-h-screen text-white overflow-hidden">
 
       <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="fixed top-0 left-0 w-full h-full object-cover -z-10"
-      >
+  autoPlay
+  muted
+  loop
+  playsInline
+  className="fixed top-0 left-0 w-full h-full object-cover -z-10 pointer-events-none"
+>
         <source
           src="https://cdn.discordapp.com/app-assets/356876590342340608/store/1486738060996644944.mp4?size=4096"
           type="video/mp4"
         />
       </video>
 
-      <div className="absolute inset-0 bg-black/60 -z-10" />
+<div className="absolute inset-0 bg-black/60 -z-10 pointer-events-none" />
 
       <section className="max-w-7xl mx-auto px-6 pt-40">
 
