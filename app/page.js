@@ -72,7 +72,7 @@ export default function Home() {
 
           <h1 className="text-7xl font-black leading-tight">
             THUNDER
-            <span className="text-red-500"> KARTELLS</span>
+            <span className="text-blue-500"> KARTELLS</span>
           </h1>
 
           <p className="mt-6 text-zinc-300 max-w-2xl text-lg">
@@ -82,7 +82,7 @@ export default function Home() {
           <div className="flex gap-4 mt-10">
 
             <a
-              href="https://discord.gg/YOURINVITE"
+              href="https://discord.gg/ehtk"
               target="_blank"
               className="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded-2xl font-bold"
             >
@@ -133,7 +133,7 @@ export default function Home() {
               className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-6"
             >
 
-              <Icon className="text-red-500 mb-4" size={32} />
+              <Icon className="text-white-500 mb-4" size={32} />
 
               <h2 className="text-zinc-400 text-sm">
                 {item.title}
