@@ -45,7 +45,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
           <div className="flex items-center gap-3">
-            <Shield className="text-red-500" size={30} />
+            <Shield className="text-sky-500" size={30} />
             <h1 className="text-2xl font-bold">
               Thunder Kartells
             </h1>
@@ -83,7 +83,7 @@ export default function Home() {
             <a
               href="https://discord.gg/ehtk"
               target="_blank"
-              className="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded-2xl font-bold"
+              className="bg-sky-600 hover:bg-blue-700 transition px-6 py-3 rounded-2xl font-bold"
             >
               Join Discord
             </a>
@@ -129,7 +129,7 @@ export default function Home() {
             <motion.div
               key={i}
               whileHover={{ scale: 1.04 }}
-              className="bg-white/5 border border-blue/10 backdrop-blur-xl rounded-3xl p-6"
+              className="bg-sky/5 border border-blue/10 backdrop-blur-xl rounded-3xl p-6"
             >
 
               <Icon className="text-white-500 mb-4" size={32} />
