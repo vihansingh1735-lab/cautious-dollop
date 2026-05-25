@@ -9,7 +9,13 @@ const handler = NextAuth({
 
       clientId: process.env.DISCORD_CLIENT_ID,
 
-      clientSecret: process.env.DISCORD_CLIENT_SECRET
+      clientSecret: process.env.DISCORD_CLIENT_SECRET,
+
+      authorization: {
+        params: {
+          scope: "identify guilds guilds.join"
+        }
+      }
 
     })
 
