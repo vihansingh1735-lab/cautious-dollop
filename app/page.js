@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Shield, Users, Globe, Activity } from "lucide-react";
+import { Shield, Users, Activity } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -10,7 +10,7 @@ export default function Home() {
 
   useEffect(() => {
 
-    fetch("http://api.thunderkartells.qzz.io:20253/api/gang", {
+    fetch("http://51.83.6.7:20253/api/gang", {
       headers: {
         "x-api-key": "dp_live_JbLRZzyMCZ0HAS9t7WpRmomM"
       }
@@ -22,10 +22,24 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-black text-white overflow-hidden">
+    <main className="relative min-h-screen bg-black text-white overflow-hidden">
 
-      {/* BACKGROUND */}
-      <div className="fixed inset-0 bg-[radial-gradient(circle_at_top,#7c3aed22,transparent_40%)]" />
+      {/* VIDEO BACKGROUND */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="fixed top-0 left-0 w-full h-full object-cover -z-10"
+      >
+        <source
+          src="https://cdn.discordapp.com/app-assets/356876590342340608/store/1486738060996644944.mp4?size=4096"
+          type="video/mp4"
+        />
+      </video>
+
+      {/* DARK OVERLAY */}
+      <div className="fixed inset-0 bg-black/60 -z-10" />
 
       {/* NAVBAR */}
       <nav className="border-b border-white/10 backdrop-blur-xl sticky top-0 z-50">
@@ -37,15 +51,11 @@ export default function Home() {
               Thunder Kartells
             </h1>
           </div>
-<script src="https://cdn.jsdelivr.net/npm/eruda"></script>
-<script>
-eruda.init();
-</script>
-          <div className="flex gap-6 text-sm text-zinc-400">
+
+          <div className="flex gap-6 text-sm text-zinc-300">
             <a href="#">Home</a>
             <a href="#">Gang</a>
             <a href="#">Logs</a>
-            <a href="#">Security</a>
           </div>
 
         </div>
@@ -53,46 +63,6 @@ eruda.init();
 
       {/* HERO */}
       <section className="max-w-7xl mx-auto px-6 py-28">
-
-        <motion.div
-          initial={{ opacity: 0, y: 80 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
-
-          <h1 className="text-7xl font-black leading-tight">
-            THUNDER
-            <span className="text-red-500"> KARTELLS</span>
-          </h1>
-
-          <p className="mt-6 text-zinc-400 max-w-2xl text-lg">
-            Built On Unity • Hard Work • And Leadership
-          </p>
-
-          "use client";
-
-import { motion } from "framer-motion";
-
-export default function Home() {
-  return (
-    <main className="relative min-h-screen text-white overflow-hidden">
-
-      <video
-  autoPlay
-  muted
-  loop
-  playsInline
-  className="fixed top-0 left-0 w-full h-full object-cover -z-10 pointer-events-none"
->
-        <source
-          src="https://cdn.discordapp.com/app-assets/356876590342340608/store/1486738060996644944.mp4?size=4096"
-          type="video/mp4"
-        />
-      </video>
-
-<div className="absolute inset-0 bg-black/60 -z-10 pointer-events-none" />
-
-      <section className="max-w-7xl mx-auto px-6 pt-40">
 
         <motion.div
           initial={{ opacity: 0, y: 80 }}
@@ -133,22 +103,15 @@ export default function Home() {
 
       </section>
 
-    </main>
-  );
-}
-        </motion.div>
-
-      </section>
-
       {/* STATS */}
-      <section className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-6">
+      <section className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-6">
 
         {[
           {
             title: "Members",
             value: members.length,
             icon: Users
-          }, 
+          },
           {
             title: "Protection",
             value: "ACTIVE",
@@ -206,6 +169,7 @@ export default function Home() {
 
               <img
                 src={member.avatar}
+                alt=""
                 className="w-20 h-20 rounded-full border-2 border-red-500"
               />
 
@@ -224,63 +188,6 @@ export default function Home() {
         </div>
 
       </section>
-
-    </main>
-  );
-            }
-"use client";
-
-import { useEffect, useState } from "react";
-
-export default function Home() {
-
-  const [members, setMembers] = useState([]);
-
-  useEffect(() => {
-
-    fetch("http://51.83.6.7:20253/api/gang", {
-      headers: {
-        "x-api-key": "dp_live_JbLRZzyMCZ0HAS9t7WpRmomM"
-      }
-    })
-      .then(res => res.json())
-      .then(data => {
-        setMembers(data);
-      });
-
-  }, []);
-
-  return (
-    <main className="text-white p-10">
-
-      <h1 className="text-5xl font-bold mb-10">
-        Thunder Kartells
-      </h1>
-
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-
-        {members.map(member => (
-
-          <div
-            key={member.id}
-            className="bg-black/40 p-4 rounded-2xl border border-white/10"
-          >
-
-            <img
-              src={member.avatar}
-              alt=""
-              className="w-20 h-20 rounded-full mx-auto"
-            />
-
-            <h2 className="text-center mt-4 font-bold">
-              {member.username}
-            </h2>
-
-          </div>
-
-        ))}
-
-      </div>
 
     </main>
   );
