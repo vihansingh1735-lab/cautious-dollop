@@ -3,7 +3,12 @@
 import { motion } from "framer-motion";
 import { Shield, Users, Activity } from "lucide-react";
 import { useEffect, useState } from "react";
+const express = require("express");
+const cors = require("cors");
 
+const app = express();
+
+app.use(cors());
 export default function Home() {
 
   const [members, setMembers] = useState([]);
