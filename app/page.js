@@ -228,3 +228,60 @@ export default function Home() {
     </main>
   );
             }
+"use client";
+
+import { useEffect, useState } from "react";
+
+export default function Home() {
+
+  const [members, setMembers] = useState([]);
+
+  useEffect(() => {
+
+    fetch("http://51.83.6.7:20253/api/gang", {
+      headers: {
+        "x-api-key": "dp_live_JbLRZzyMCZ0HAS9t7WpRmomM"
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        setMembers(data);
+      });
+
+  }, []);
+
+  return (
+    <main className="text-white p-10">
+
+      <h1 className="text-5xl font-bold mb-10">
+        Thunder Kartells
+      </h1>
+
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+        {members.map(member => (
+
+          <div
+            key={member.id}
+            className="bg-black/40 p-4 rounded-2xl border border-white/10"
+          >
+
+            <img
+              src={member.avatar}
+              alt=""
+              className="w-20 h-20 rounded-full mx-auto"
+            />
+
+            <h2 className="text-center mt-4 font-bold">
+              {member.username}
+            </h2>
+
+          </div>
+
+        ))}
+
+      </div>
+
+    </main>
+  );
+}
