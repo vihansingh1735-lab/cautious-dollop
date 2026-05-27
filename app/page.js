@@ -1,11 +1,12 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 import { motion } from "framer-motion";
 
 import {
   Shield,
   Users,
-  Activity,
   Crown,
   Star,
   Sword
@@ -16,11 +17,6 @@ import {
   signOut,
   useSession
 } from "next-auth/react";
-
-import {
-  useEffect,
-  useState
-} from "react";
 
 export default function Home() {
 
@@ -34,28 +30,17 @@ export default function Home() {
 
     fetch("/api/gang")
 
-      .then(async (res) => {
+      .then(res => res.json())
 
-        const data =
-          await res.json();
+      .then(data => {
 
         if (Array.isArray(data)) {
-
           setMembers(data);
-
-        } else {
-
-          setMembers([]);
-
         }
 
       })
 
-      .catch((err) => {
-
-        console.log(err);
-
-      });
+      .catch(console.error);
 
   }, []);
 
@@ -63,23 +48,17 @@ export default function Home() {
 
     Founder:
       members.filter(
-        m =>
-          (m.role || "Member")
-            === "Founder"
+        m => m.role === "Founder"
       ),
 
     Management:
       members.filter(
-        m =>
-          (m.role || "Member")
-            === "Management"
+        m => m.role === "Management"
       ),
 
     Moderator:
       members.filter(
-        m =>
-          (m.role || "Member")
-            === "Moderator"
+        m => m.role === "Moderator"
       ),
 
     Member:
@@ -103,18 +82,17 @@ export default function Home() {
   return (
 
     <main className="
-      relative
       min-h-screen
       bg-black
       text-white
       overflow-hidden
+      relative
     ">
 
       <div className="
         fixed
         inset-0
         -z-10
-        overflow-hidden
       ">
 
         <div className="
@@ -125,30 +103,24 @@ export default function Home() {
 
         <div className="
           absolute
-          top-[-250px]
-          left-[-200px]
-          w-[700px]
-          h-[700px]
-          bg-sky-500/25
+          top-[-200px]
+          left-[-150px]
+          w-[600px]
+          h-[600px]
           rounded-full
-          blur-[180px]
+          bg-sky-500/20
+          blur-[160px]
         " />
 
         <div className="
           absolute
-          bottom-[-250px]
-          right-[-200px]
-          w-[700px]
-          h-[700px]
+          bottom-[-200px]
+          right-[-150px]
+          w-[600px]
+          h-[600px]
+          rounded-full
           bg-cyan-400/20
-          rounded-full
-          blur-[180px]
-        " />
-
-        <div className="
-          absolute
-          inset-0
-          bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_60%)]
+          blur-[160px]
         " />
 
       </div>
@@ -158,14 +130,14 @@ export default function Home() {
         mx-auto
         px-6
         pt-40
-        pb-28
+        pb-24
       ">
 
         <motion.div
 
           initial={{
             opacity: 0,
-            y: 60
+            y: 50
           }}
 
           animate={{
@@ -186,10 +158,9 @@ export default function Home() {
             px-4
             py-2
             rounded-full
-            bg-white/5
             border
             border-sky-400/20
-            backdrop-blur-xl
+            bg-white/5
             mb-8
           ">
 
@@ -205,7 +176,7 @@ export default function Home() {
               text-sm
               text-zinc-300
             ">
-              Thunder Kartells Community
+              Thunder Kartells
             </span>
 
           </div>
@@ -215,16 +186,15 @@ export default function Home() {
             md:text-8xl
             font-black
             leading-[0.95]
-            tracking-tight
           ">
 
-            Built Different.
+            Built Different
 
             <br />
 
             <span className="
               text-sky-400
-              drop-shadow-[0_0_35px_rgba(56,189,248,0.7)]
+              drop-shadow-[0_0_30px_rgba(56,189,248,0.7)]
             ">
 
               Thunder Kartells
@@ -237,16 +207,13 @@ export default function Home() {
             mt-8
             text-zinc-300
             text-xl
-            leading-relaxed
             max-w-2xl
+            leading-relaxed
           ">
 
-            A modern organized community built
-            on loyalty, leadership and unity.
-
-            Join the network, connect with
-            members and experience the next
-            generation Thunder Kartells system.
+            A modern organized community
+            built on loyalty, leadership
+            and unity.
 
           </p>
 
@@ -254,7 +221,7 @@ export default function Home() {
             flex
             gap-4
             flex-wrap
-            mt-12
+            mt-10
           ">
 
             <a
@@ -263,14 +230,12 @@ export default function Home() {
               className="
                 bg-sky-500
                 hover:bg-sky-400
-                transition-all
-                duration-300
+                transition
                 px-8
                 py-4
                 rounded-2xl
                 font-bold
-                text-lg
-                shadow-[0_0_30px_rgba(56,189,248,0.45)]
+                shadow-[0_0_30px_rgba(56,189,248,0.4)]
               "
             >
               Join Discord
@@ -285,21 +250,18 @@ export default function Home() {
                 }
 
                 className="
-                  bg-white/5
-                  hover:bg-white/10
                   border
                   border-white/10
-                  backdrop-blur-xl
-                  transition-all
-                  duration-300
+                  bg-white/5
+                  hover:bg-white/10
+                  transition
                   px-8
                   py-4
                   rounded-2xl
-                  text-lg
                 "
               >
 
-                Login With Discord
+                Login
 
               </button>
 
@@ -312,16 +274,14 @@ export default function Home() {
                 }
 
                 className="
-                  bg-red-500/10
-                  hover:bg-red-500/20
                   border
                   border-red-500/20
-                  transition-all
-                  duration-300
+                  bg-red-500/10
+                  hover:bg-red-500/20
+                  transition
                   px-8
                   py-4
                   rounded-2xl
-                  text-lg
                 "
               >
 
@@ -332,49 +292,6 @@ export default function Home() {
             )}
 
           </div>
-
-          {session && (
-
-            <div className="
-              mt-10
-              flex
-              items-center
-              gap-4
-            ">
-
-              <img
-                src={session.user.image}
-                alt=""
-                className="
-                  w-16
-                  h-16
-                  rounded-full
-                  border-2
-                  border-sky-400
-                "
-              />
-
-              <div>
-
-                <h2 className="
-                  text-2xl
-                  font-bold
-                ">
-                  {session.user.name}
-                </h2>
-
-                <p className="
-                  text-zinc-400
-                  text-sm
-                ">
-                  Connected with Discord
-                </p>
-
-              </div>
-
-            </div>
-
-          )}
 
         </motion.div>
 
@@ -397,15 +314,15 @@ export default function Home() {
           },
 
           {
-            title: "Protection",
-            value: "ACTIVE",
+            title: "Status",
+            value: "Secured",
             icon: Shield
           },
 
           {
-            title: "Status",
-            value: "SECURED",
-            icon: Activity
+            title: "System",
+            value: "Active",
+            icon: Star
           }
 
         ].map((item, i) => {
@@ -415,6 +332,7 @@ export default function Home() {
           return (
 
             <motion.div
+
               key={i}
 
               whileHover={{
@@ -428,7 +346,6 @@ export default function Home() {
                 backdrop-blur-2xl
                 rounded-3xl
                 p-7
-                shadow-[0_0_40px_rgba(56,189,248,0.15)]
               "
             >
 
@@ -437,7 +354,7 @@ export default function Home() {
                   text-sky-400
                   mb-4
                 "
-                size={36}
+                size={34}
               />
 
               <h2 className="
@@ -463,15 +380,12 @@ export default function Home() {
 
       </section>
 
-      <section
-        id="members"
-        className="
-          max-w-7xl
-          mx-auto
-          px-6
-          py-28
-        "
-      >
+      <section className="
+        max-w-7xl
+        mx-auto
+        px-6
+        py-28
+      ">
 
         <h2 className="
           text-5xl
@@ -539,26 +453,14 @@ export default function Home() {
                       }}
 
                       className="
-                        relative
                         bg-white/10
                         border
                         border-sky-400/20
-                        backdrop-blur-2xl
                         rounded-3xl
                         p-6
-                        overflow-hidden
-                        shadow-[0_0_40px_rgba(56,189,248,0.15)]
+                        backdrop-blur-2xl
                       "
                     >
-
-                      <div className="
-                        absolute
-                        inset-0
-                        bg-gradient-to-br
-                        from-sky-400/10
-                        to-transparent
-                        pointer-events-none
-                      " />
 
                       <img
                         src={member.avatar}
@@ -607,4 +509,4 @@ export default function Home() {
 
   );
 
-            }
+          }
