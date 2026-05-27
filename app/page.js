@@ -252,7 +252,7 @@ export default function Home() {
           ">
 
             <a
-              href="https://discord.gg/"
+              href="https://discord.gg/ehtk"
               target="_blank"
               className="
                 bg-sky-500
@@ -515,7 +515,7 @@ export default function Home() {
                       text-sm
                       mt-1
                     ">
-                      {member.role}
+                      {member.role || "Member"}
                     </p>
 
                   </motion.div>
