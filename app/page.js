@@ -30,7 +30,37 @@ export default function Home() {
 
   useEffect(() => {
 
-    fetch("/api/gang")
+  fetch("/api/gang")
+    .then(async res => {
+
+      const data =
+        await res.json();
+
+      console.log(data);
+
+      if (Array.isArray(data)) {
+
+        setMembers(data);
+
+      } else {
+
+        console.log(
+          "Not array:",
+          data
+        );
+
+        setMembers([]);
+
+      }
+
+    })
+    .catch(err => {
+
+      console.log(err);
+
+    });
+
+}, []);
       .then(res => res.json())
 .then(data => {
 
