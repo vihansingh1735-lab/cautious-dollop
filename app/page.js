@@ -5,7 +5,10 @@ import { motion } from "framer-motion";
 import {
   Shield,
   Users,
-  Activity
+  Activity,
+  Crown,
+  Star,
+  Sword
 } from "lucide-react";
 
 import {
@@ -21,94 +24,156 @@ import {
 
 export default function Home() {
 
-  const {
-    data: session
-  } = useSession();
+  const { data: session } = useSession();
 
-  const [members, setMembers] =
-    useState([]);
-
-  // =========================
-  // FETCH API
-  // =========================
+  const [members, setMembers] = useState([]);
 
   useEffect(() => {
 
-  fetch("/api/gang", {
-    headers: {
-      "x-api-key": "dp_live_JbLRZzyMCZ0HAS9t7WpRmomM"
-    }
-  })
-    .then(res => res.json())
-    .then(data => setMembers(data))
-    .catch(console.error);
+    fetch("/api/gang")
+      .then(res => res.json())
+      .then(data => setMembers(data))
+      .catch(console.error);
 
-}, []);
+  }, []);
+
+  const groupedMembers = {
+
+    Founder:
+      members.filter(
+        m => m.role === "Founder"
+      ),
+
+    Management:
+      members.filter(
+        m => m.role === "Management"
+      ),
+
+    Moderator:
+      members.filter(
+        m => m.role === "Moderator"
+      ),
+
+    Member:
+      members.filter(
+        m => m.role === "Member"
+      )
+
+  };
+
+  const roleIcons = {
+    Founder: Crown,
+    Management: Shield,
+    Moderator: Sword,
+    Member: Star
+  };
+
   return (
 
-    <main className="relative min-h-screen bg-black text-white overflow-hidden">
+    <main className="
+      relative
+      min-h-screen
+      text-white
+      overflow-hidden
+      bg-black
+    ">
 
-      {/* VIDEO BACKGROUND */}
+      {/* FLASHY BACKGROUND */}
 
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="fixed top-0 left-0 w-full h-full object-cover -z-10 pointer-events-none"
-      >
+      <div className="fixed inset-0 -z-10 overflow-hidden">
 
-        <source
-          src="https://cdn.discordapp.com/app-assets/356876590342340608/store/1486738060996644944.mp4?size=4096"
-          type="video/mp4"
-        />
+        <div className="absolute inset-0 bg-black" />
 
-      </video>
+        <div className="
+          absolute
+          top-[-250px]
+          left-[-200px]
+          w-[600px]
+          h-[600px]
+          bg-sky-500/30
+          blur-[160px]
+          rounded-full
+        " />
 
-      {/* OVERLAY */}
+        <div className="
+          absolute
+          bottom-[-250px]
+          right-[-200px]
+          w-[600px]
+          h-[600px]
+          bg-cyan-400/20
+          blur-[160px]
+          rounded-full
+        " />
 
-      <div className="fixed inset-0 bg-black/70 -z-10 pointer-events-none" />
+        <div className="
+          absolute
+          inset-0
+          bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.06),transparent_60%)]
+        " />
+
+      </div>
 
       {/* NAVBAR */}
 
-      <nav className="border-b border-white/10 backdrop-blur-xl sticky top-0 z-50">
+      <nav className="
+        sticky
+        top-0
+        z-50
+        border-b
+        border-white/10
+        bg-black/30
+        backdrop-blur-2xl
+      ">
 
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="
+          max-w-7xl
+          mx-auto
+          px-6
+          py-4
+          flex
+          items-center
+          justify-between
+        ">
 
           <div className="flex items-center gap-3">
 
             <Shield
               className="text-sky-400"
-              size={30}
+              size={32}
             />
 
-            <h1 className="text-2xl font-bold">
+            <h1 className="
+              text-2xl
+              font-black
+              tracking-wide
+            ">
               Thunder Kartells
             </h1>
 
           </div>
 
-          <div className="flex items-center gap-6">
+          <div className="
+            flex
+            gap-6
+            text-sm
+            text-zinc-300
+          ">
 
-            <a
-              href="#"
-              className="text-zinc-300"
-            >
+            <a href="#">
               Home
             </a>
 
-            <a
-              href="#members"
-              className="text-zinc-300"
-            >
+            <a href="#">
               Members
             </a>
 
-            <a
-              href="#stats"
-              className="text-zinc-300"
-            >
+            <a href="#">
               Stats
+            </a>
+
+            <a href="#">
+              Dashboard
             </a>
 
           </div>
@@ -119,12 +184,18 @@ export default function Home() {
 
       {/* HERO */}
 
-      <section className="max-w-7xl mx-auto px-6 py-28">
+      <section className="
+        max-w-7xl
+        mx-auto
+        px-6
+        pt-32
+        pb-24
+      ">
 
         <motion.div
           initial={{
             opacity: 0,
-            y: 80
+            y: 60
           }}
           animate={{
             opacity: 1,
@@ -135,30 +206,55 @@ export default function Home() {
           }}
         >
 
-          <h1 className="text-7xl font-black leading-tight">
+          <h1 className="
+            text-7xl
+            md:text-8xl
+            font-black
+            leading-tight
+          ">
 
             THUNDER
 
-            <span className="text-sky-400">
+            <span className="
+              text-sky-400
+              drop-shadow-[0_0_30px_rgba(56,189,248,0.8)]
+            ">
               {" "}KARTELLS
             </span>
 
           </h1>
 
-          <p className="mt-6 text-zinc-300 max-w-2xl text-lg">
+          <p className="
+            mt-6
+            text-zinc-300
+            text-lg
+            max-w-2xl
+          ">
 
             Built On Unity • Hard Work • Leadership
 
           </p>
 
-          {/* BUTTONS */}
-
-          <div className="flex gap-4 mt-10 flex-wrap">
+          <div className="
+            flex
+            gap-4
+            mt-10
+            flex-wrap
+          ">
 
             <a
-              href="https://discord.gg/ehtk"
+              href="https://discord.gg/"
               target="_blank"
-              className="bg-sky-500 hover:bg-sky-600 transition px-6 py-3 rounded-2xl font-bold"
+              className="
+                bg-sky-500
+                hover:bg-sky-400
+                transition
+                px-7
+                py-3
+                rounded-2xl
+                font-bold
+                shadow-[0_0_25px_rgba(56,189,248,0.5)]
+              "
             >
               Join Discord
             </a>
@@ -169,56 +265,43 @@ export default function Home() {
                 onClick={() =>
                   signIn("discord")
                 }
-                className="border border-white/10 hover:bg-white/10 transition px-6 py-3 rounded-2xl"
+                className="
+                  border
+                  border-sky-400/30
+                  bg-white/5
+                  hover:bg-white/10
+                  transition
+                  px-7
+                  py-3
+                  rounded-2xl
+                "
               >
                 Login With Discord
               </button>
 
             ) : (
 
-              <a
-                href="/dashboard"
-                className="border border-white/10 hover:bg-white/10 transition px-6 py-3 rounded-2xl"
+              <button
+                onClick={() =>
+                  signOut()
+                }
+                className="
+                  border
+                  border-red-500/30
+                  bg-red-500/10
+                  hover:bg-red-500/20
+                  transition
+                  px-7
+                  py-3
+                  rounded-2xl
+                "
               >
-                Dashboard
-              </a>
+                Logout
+              </button>
 
             )}
 
           </div>
-
-          {/* USER */}
-
-          {session && (
-
-            <div className="mt-8 flex items-center gap-4">
-
-              <img
-                src={session.user.image}
-                alt=""
-                className="w-14 h-14 rounded-full border-2 border-sky-400"
-              />
-
-              <div>
-
-                <h2 className="font-bold text-xl">
-                  {session.user.name}
-                </h2>
-
-                <button
-                  onClick={() =>
-                    signOut()
-                  }
-                  className="text-red-400 text-sm"
-                >
-                  Logout
-                </button>
-
-              </div>
-
-            </div>
-
-          )}
 
         </motion.div>
 
@@ -226,10 +309,14 @@ export default function Home() {
 
       {/* STATS */}
 
-      <section
-        id="stats"
-        className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-6"
-      >
+      <section className="
+        max-w-7xl
+        mx-auto
+        px-6
+        grid
+        md:grid-cols-3
+        gap-6
+      ">
 
         {[
           {
@@ -259,21 +346,39 @@ export default function Home() {
             <motion.div
               key={i}
               whileHover={{
-                scale: 1.04
+                scale: 1.03
               }}
-              className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-6"
+              className="
+                bg-white/10
+                border
+                border-sky-400/20
+                backdrop-blur-2xl
+                rounded-3xl
+                p-7
+                shadow-[0_0_40px_rgba(56,189,248,0.15)]
+              "
             >
 
               <Icon
-                className="text-sky-400 mb-4"
-                size={32}
+                className="
+                  text-sky-400
+                  mb-4
+                "
+                size={36}
               />
 
-              <h2 className="text-zinc-400 text-sm">
+              <h2 className="
+                text-zinc-300
+                text-sm
+              ">
                 {item.title}
               </h2>
 
-              <p className="text-3xl font-black mt-2">
+              <p className="
+                text-4xl
+                font-black
+                mt-2
+              ">
                 {item.value}
               </p>
 
@@ -287,48 +392,134 @@ export default function Home() {
 
       {/* MEMBERS */}
 
-      <section
-        id="members"
-        className="max-w-7xl mx-auto px-6 py-24"
-      >
+      <section className="
+        max-w-7xl
+        mx-auto
+        px-6
+        py-28
+      ">
 
-        <h2 className="text-4xl font-black mb-10">
-
+        <h2 className="
+          text-5xl
+          font-black
+          mb-16
+        ">
           Gang Members
-
         </h2>
 
-        <div className="grid md:grid-cols-4 gap-6">
+        {Object.entries(groupedMembers).map(([role, users]) => {
 
-          {members.map((member, i) => (
+          if (users.length === 0)
+            return null;
 
-            <motion.div
-              key={i}
-              whileHover={{
-                y: -5
-              }}
-              className="bg-white/5 border border-white/10 rounded-3xl p-5 backdrop-blur-xl"
+          const Icon = roleIcons[role];
+
+          return (
+
+            <div
+              key={role}
+              className="mb-20"
             >
 
-              <img
-                src={member.avatar}
-                alt=""
-                className="w-20 h-20 rounded-full border-2 border-sky-400"
-              />
+              <div className="
+                flex
+                items-center
+                gap-4
+                mb-8
+              ">
 
-              <h3 className="mt-4 text-xl font-bold">
-                {member.username}
-              </h3>
+                <Icon
+                  className="
+                    text-sky-400
+                  "
+                  size={34}
+                />
 
-              <p className="text-zinc-400 text-sm mt-1">
-                {member.id}
-              </p>
+                <h3 className="
+                  text-4xl
+                  font-black
+                  text-sky-300
+                ">
+                  {role}
+                </h3>
 
-            </motion.div>
+              </div>
 
-          ))}
+              <div className="
+                grid
+                md:grid-cols-4
+                gap-6
+              ">
 
-        </div>
+                {users.map((member, i) => (
+
+                  <motion.div
+                    key={i}
+                    whileHover={{
+                      y: -8,
+                      scale: 1.02
+                    }}
+                    className="
+                      relative
+                      bg-white/10
+                      border
+                      border-sky-400/20
+                      backdrop-blur-2xl
+                      rounded-3xl
+                      p-6
+                      overflow-hidden
+                      shadow-[0_0_40px_rgba(56,189,248,0.15)]
+                    "
+                  >
+
+                    <div className="
+                      absolute
+                      inset-0
+                      bg-gradient-to-br
+                      from-sky-400/10
+                      to-transparent
+                      pointer-events-none
+                    " />
+
+                    <img
+                      src={member.avatar}
+                      className="
+                        w-24
+                        h-24
+                        rounded-full
+                        border-4
+                        border-sky-400
+                        object-cover
+                      "
+                    />
+
+                    <h3 className="
+                      mt-5
+                      text-2xl
+                      font-black
+                    ">
+                      {member.username}
+                    </h3>
+
+                    <p className="
+                      text-sky-300
+                      text-sm
+                      mt-1
+                    ">
+                      {member.role}
+                    </p>
+
+                  </motion.div>
+
+                ))}
+
+              </div>
+
+            </div>
+
+          );
+
+        })}
 
       </section>
 
@@ -336,4 +527,4 @@ export default function Home() {
 
   );
 
-          }
+                  }
