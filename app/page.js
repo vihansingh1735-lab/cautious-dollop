@@ -32,7 +32,16 @@ export default function Home() {
 
     fetch("/api/gang")
       .then(res => res.json())
-      .then(data => setMembers(data))
+.then(data => {
+
+  if (Array.isArray(data)) {
+    setMembers(data);
+  } else {
+    setMembers([]);
+    console.log(data);
+  }
+
+})
       .catch(console.error);
 
   }, []);
